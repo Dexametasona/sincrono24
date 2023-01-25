@@ -20,9 +20,9 @@ export class LoginComponent {
   );
 
   constructor(private breakpointObserver: BreakpointObserver) {}
-  form=FormGroup({
-    emailFormControl:new FormControl('', [Validators.required, Validators.email, Validators.pattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')]);
-    passFormControl:passFormControl=new FormControl('', [Validators.required, Validators.minLength(4)])
+  form= new FormGroup({
+    emailFormControl:new FormControl('', [Validators.required, Validators.email, Validators.pattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')]),
+    passFormControl:new FormControl('', [Validators.required, Validators.minLength(4)])
   })
   
   
