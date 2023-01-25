@@ -1,22 +1,42 @@
 <div class="grid-container">
-  <h1 class="mat-h1">Dashboard</h1>
+  <h1 class="mat-h1">Login</h1>
   <mat-grid-list cols="2" rowHeight="350px">
     <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
       <mat-card class="dashboard-card">
         <mat-card-header>
           <mat-card-title>
             {{card.title}}
-            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-              <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu" xPosition="before">
-              <button mat-menu-item>Expand</button>
-              <button mat-menu-item>Remove</button>
-            </mat-menu>
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
-          <div>Card Content Here</div>
+          <div class="box">
+            <h2>Iniciar sesión</h2>
+            <form class="example-form">
+              <mat-form-field class="example-full-width">
+                <mat-label>Correo</mat-label>
+                <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
+                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                  Correo inválido
+                </mat-error>
+                <mat-error *ngIf="emailFormControl.hasError('required')">
+                  Correo es <strong>requerido</strong>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="example-full-width">
+                <mat-label>Contraseña</mat-label>
+                <input type="password" matInput [formControl]="passFormControl" placeholder="min. 4 carácteres">
+                <mat-error *ngIf="passFormControl.hasError('email') && !passFormControl.hasError('required')">
+                  Contraseña inválida
+                </mat-error>
+                <mat-error *ngIf="passFormControl.hasError('required')">
+                  Contraseña es <strong>requerida</strong>
+                </mat-error>
+              </mat-form-field>
+              <div>
+                <button mat-raised-button color="primary">Primary</button>
+              </div>
+            </form>
+          </div>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
