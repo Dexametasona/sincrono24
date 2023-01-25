@@ -1,0 +1,22 @@
+<div class="grid-container">
+  <h1 class="mat-h1">Detalles</h1>
+  <mat-grid-list cols="2" rowHeight="50vh">
+    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            {{user.name}}
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div>
+            <p>Nombre: {{user.name}}</p>
+            <p>Website: {{user.website}}</p>
+            <p>Telefono: {{user.phone}}</p>
+            <button (click)="back()" mat-raised-button color="primary">Back</button>
+          </div>
+        </mat-card-content>
+      </mat-card> 
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

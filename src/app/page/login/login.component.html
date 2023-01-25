@@ -14,7 +14,7 @@
             <form class="example-form" [formGroup]="form">
               <mat-form-field class="example-full-width">
                 <mat-label>Usuario</mat-label>
-                <input type="text" matInput formControlName="userFormControl" placeholder="min. 4 carácteres">
+                <input type="text" matInput formControlName="userFormControl" placeholder="min. 3 carácteres">
                 <mat-error *ngIf="form.get('userFormControl')?.hasError('minlength') && !form.get('userFormControl')?.hasError('required')">
                   Minimo 3 caracteres.
                 </mat-error>

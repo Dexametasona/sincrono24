@@ -11,12 +11,15 @@ import { HomeComponent } from './home/home.component';
 import {MatInputModule} from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import {MatTableModule} from '@angular/material/table';
+import { DetailComponent } from './detail/detail.component';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    DetailComponent
   ],
   imports: [
     CommonModule,
@@ -28,11 +31,13 @@ import { HttpClientModule } from '@angular/common/http';
     LayoutModule,
     MatInputModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule
   ],
   exports: [
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    DetailComponent
   ]
 })
 export class PageModule { }
