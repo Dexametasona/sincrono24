@@ -11,29 +11,29 @@
         <mat-card-content class="dashboard-card-content">
           <div class="box">
             <h2>Iniciar sesión</h2>
-            <form class="example-form">
+            <form class="example-form" [formGroup]="form">
               <mat-form-field class="example-full-width">
                 <mat-label>Correo</mat-label>
-                <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
-                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                <input type="email" matInput formControlName="emailFormControl" placeholder="Ex. pat@example.com">
+                <mat-error *ngIf="form.get('emailFormControl')?.hasError('email') && !form.get('emailFormControl')?.hasError('required')">
                   Correo inválido
                 </mat-error>
-                <mat-error *ngIf="emailFormControl.hasError('required')">
+                <mat-error *ngIf="form.get('emailFormControl')?.hasError('required')">
                   Correo es <strong>requerido</strong>
                 </mat-error>
               </mat-form-field>
               <mat-form-field class="example-full-width">
                 <mat-label>Contraseña</mat-label>
-                <input type="password" matInput [formControl]="passFormControl" placeholder="min. 4 carácteres">
-                <mat-error *ngIf="passFormControl.hasError('email') && !passFormControl.hasError('required')">
+                <input type="password" matInput formControlName="passFormControl" placeholder="min. 4 carácteres">
+                <mat-error *ngIf="form.get('passFormControl')?.hasError('email') && !form.get('passFormControl')?.hasError('required')">
                   Contraseña inválida
                 </mat-error>
-                <mat-error *ngIf="passFormControl.hasError('required')">
+                <mat-error *ngIf="form.get('passFormControl')?.hasError('required')">
                   Contraseña es <strong>requerida</strong>
                 </mat-error>
               </mat-form-field>
               <div>
-                <button mat-raised-button color="primary">Primary</button>
+                <button mat-raised-button color="primary">Enviar</button>
               </div>
             </form>
           </div>
