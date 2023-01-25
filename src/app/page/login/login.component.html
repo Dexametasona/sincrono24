@@ -13,27 +13,27 @@
             <h2>Iniciar sesión</h2>
             <form class="example-form" [formGroup]="form">
               <mat-form-field class="example-full-width">
-                <mat-label>Correo</mat-label>
-                <input type="email" matInput formControlName="emailFormControl" placeholder="Ex. pat@example.com">
-                <mat-error *ngIf="form.get('emailFormControl')?.hasError('email') && !form.get('emailFormControl')?.hasError('required')">
-                  Correo inválido
+                <mat-label>Usuario</mat-label>
+                <input type="text" matInput formControlName="userFormControl" placeholder="min. 4 carácteres">
+                <mat-error *ngIf="form.get('userFormControl')?.hasError('minlength') && !form.get('userFormControl')?.hasError('required')">
+                  Minimo 3 caracteres.
                 </mat-error>
-                <mat-error *ngIf="form.get('emailFormControl')?.hasError('required')">
-                  Correo es <strong>requerido</strong>
+                <mat-error *ngIf="form.get('userFormControl')?.hasError('required')">
+                  Usuario es <strong>requerido</strong>.
                 </mat-error>
               </mat-form-field>
               <mat-form-field class="example-full-width">
                 <mat-label>Contraseña</mat-label>
-                <input type="password" matInput formControlName="passFormControl" placeholder="min. 4 carácteres">
+                <input type="password" matInput formControlName="passFormControl" placeholder="Ex. pat@example.com">
                 <mat-error *ngIf="form.get('passFormControl')?.hasError('email') && !form.get('passFormControl')?.hasError('required')">
-                  Contraseña inválida
+                  Correo inválido
                 </mat-error>
                 <mat-error *ngIf="form.get('passFormControl')?.hasError('required')">
-                  Contraseña es <strong>requerida</strong>
+                  Correo es <strong>requerido</strong>
                 </mat-error>
               </mat-form-field>
               <div>
-                <button mat-raised-button color="primary">Enviar</button>
+                <button mat-raised-button color="primary" (click)="validar()">Enviar</button>
               </div>
             </form>
           </div>

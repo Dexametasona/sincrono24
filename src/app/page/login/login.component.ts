@@ -1,3 +1,4 @@
+import { DatabaseService } from './../../services/database.service';
 import { Component } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
@@ -19,11 +20,28 @@ export class LoginComponent {
     })
   );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver, private DB:DatabaseService) {}
   form= new FormGroup({
-    emailFormControl:new FormControl('', [Validators.required, Validators.email, Validators.pattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')]),
-    passFormControl:new FormControl('', [Validators.required, Validators.minLength(4)])
+    passFormControl:new FormControl('', [Validators.required, Validators.email, Validators.pattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')]),
+    userFormControl:new FormControl('', [Validators.required, Validators.minLength(3)])
   })
+
+  data:any[]=[]
   
-  
+  validar(){
+    this.DB.getBD().subscribe(res=>{
+      for (let i of res){
+        this.data.push({user:i.username, pass:i.email})
+      }
+    })
+
+    for(let i of this.data){
+      if(i.user==this.form.get('userFormControl')?.value && i.pass==this.form.get('passFormControl')?.value){
+        localStorage.setItem('status','true')
+        break
+      }else{
+        localStorage.setItem('status','false')
+      }
+    }
+  }
 }
